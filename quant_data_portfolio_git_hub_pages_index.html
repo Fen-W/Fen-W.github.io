@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Quant & Data Science Portfolio</title>
+  <meta name="description" content="Portfolio of projects in data science, quantitative research, and investment banking." />
+  <meta property="og:title" content="Your Name — Quant & Data Science Portfolio" />
+  <meta property="og:description" content="Projects: trading systems, betting bot, risk models, dashboards, and more." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <!-- Tailwind Play CDN (simple for GitHub Pages). Replace with a proper build if you prefer. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"],
+          },
+        }
+      },
+      darkMode: 'class'
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Smooth card hover */
+    .lift { transition: transform .2s ease, box-shadow .2s ease; }
+    .lift:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,.08); }
+    /* Hide while JS renders */
+    .js-hidden { visibility: hidden; }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Your Name",
+    "url": "https://your-username.github.io/",
+    "sameAs": [
+      "https://github.com/your-username",
+      "https://www.linkedin.com/in/your-linkedin"
+    ],
+    "jobTitle": "Data Scientist / Quant Researcher"
+  }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+  <!-- Top bar -->
+  <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-slate-900/60 border-b border-slate-200/70 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <a href="#home" class="font-semibold tracking-tight">Your Name</a>
+      <nav class="flex items-center gap-4">
+        <a href="#projects" class="text-sm hover:underline">Projects</a>
+        <a href="#about" class="text-sm hover:underline">About</a>
+        <a href="#contact" class="text-sm hover:underline">Contact</a>
+        <button id="themeToggle" class="ml-2 inline-flex items-center rounded-xl border border-slate-300 dark:border-slate-700 px-3 py-1 text-xs">🌙 / ☀️</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h1 class="text-3xl sm:text-4xl font-bold leading-tight">Quant & Data Science Portfolio</h1>
+        <p class="mt-4 text-slate-600 dark:text-slate-300">I design and build models and systems for prediction, pricing, and decision-making. Focus areas: systematic trading, risk, and applied ML.</p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="resume.pdf" class="rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 px-4 py-2 text-sm lift" download>Download Resume</a>
+          <a href="https://github.com/your-username" class="rounded-xl border border-slate-300 dark:border-slate-700 px-4 py-2 text-sm lift">GitHub</a>
+          <a href="https://www.linkedin.com/in/your-linkedin" class="rounded-xl border border-slate-300 dark:border-slate-700 px-4 py-2 text-sm lift">LinkedIn</a>
+        </div>
+      </div>
+      <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 lift">
+        <h2 class="font-semibold">Quick Stats</h2>
+        <dl class="mt-4 grid grid-cols-2 gap-4 text-sm">
+          <div class="rounded-xl bg-slate-50 dark:bg-slate-800 p-4">
+            <dt class="text-slate-500">Projects</dt>
+            <dd class="text-2xl font-bold" id="stat-projects">—</dd>
+          </div>
+          <div class="rounded-xl bg-slate-50 dark:bg-slate-800 p-4">
+            <dt class="text-slate-500">Core Stack</dt>
+            <dd class="font-medium">Python · Pandas · NumPy · scikit-learn · SQL</dd>
+          </div>
+        </dl>
+        <p class="mt-4 text-xs text-slate-500">*Performance metrics shown are from out-of-sample backtests or holdout sets, where indicated.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Controls -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+      <div class="flex gap-2 flex-wrap">
+        <button class="filter-btn rounded-full px-3 py-1.5 text-xs border border-slate-300 dark:border-slate-700" data-filter="All">All</button>
+        <button class="filter-btn rounded-full px-3 py-1.5 text-xs border border-slate-300 dark:border-slate-700" data-filter="Quant/Trading">Quant/Trading</button>
+        <button class="filter-btn rounded-full px-3 py-1.5 text-xs border border-slate-300 dark:border-slate-700" data-filter="Data Science">Data Science</button>
+        <button class="filter-btn rounded-full px-3 py-1.5 text-xs border border-slate-300 dark:border-slate-700" data-filter="IB/CorpFin">IB/CorpFin</button>
+      </div>
+      <div class="flex items-center gap-2">
+        <input id="searchInput" type="search" placeholder="Search projects…" class="w-full sm:w-64 rounded-xl border border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80 px-3 py-2 text-sm" />
+        <a href="#contact" class="hidden sm:inline-block rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 px-3 py-2 text-sm">Hire Me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div id="projectsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 js-hidden"></div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="md:col-span-1">
+        <h2 class="text-2xl font-bold">About Me</h2>
+      </div>
+      <div class="md:col-span-2 space-y-4 text-slate-700 dark:text-slate-300">
+        <p>Hi, I'm <strong>Your Name</strong>. I apply statistical learning and optimization to markets and business problems. I enjoy turning noisy data into robust signals and shipping production-grade tools.</p>
+        <ul class="list-disc ml-5">
+          <li><strong>Skills:</strong> Python (Pandas, NumPy, scikit-learn), SQL, Git, Jupyter, Docker, APIs, Excel/VBA.</li>
+          <li><strong>Finance:</strong> Time-series modeling, risk, factor research, portfolio construction, event studies.</li>
+          <li><strong>Extras:</strong> FastAPI, Plotly, Streamlit, Airflow, CI/CD, cloud basics.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+    <div class="grid md:grid-cols-3 gap-8 items-start">
+      <div class="md:col-span-1">
+        <h2 class="text-2xl font-bold">Contact</h2>
+      </div>
+      <div class="md:col-span-2">
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6">
+          <p class="text-slate-700 dark:text-slate-300">Email: <a href="mailto:you@domain.com" class="underline">you@domain.com</a></p>
+          <p class="mt-2 text-slate-700 dark:text-slate-300">Open to roles in data science, quant research, and analytics engineering.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-200 dark:border-slate-800 py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-slate-500 flex items-center justify-between">
+      <p>© <span id="year"></span> Your Name</p>
+      <p>Built with GitHub Pages · Tailwind</p>
+    </div>
+  </footer>
+
+  <!-- Project Data & Rendering -->
+  <script>
+    const projects = [
+      {
+        title: "Sports Betting Bot (Value + Kelly)",
+        domain: ["Quant/Trading", "Data Science"],
+        blurb: "Automated odds scraping + implied probability modeling to find +EV bets with bankroll management via Kelly.",
+        impact: "+7.8% ROI (90-day OOS) · Sharpe 1.1",
+        tech: ["Python", "Pandas", "Requests", "SQLite", "Docker"],
+        links: { github: "https://github.com/your-username/betting-bot", demo: "", post: "" }
+      },
+      {
+        title: "Systematic Trading System (XGBoost Signals)",
+        domain: ["Quant/Trading"],
+        blurb: "Signal ensemble for liquid futures using returns, carry, and seasonality; risk parity + volatility targeting.",
+        impact: "CAGR 12.4% · MaxDD -9.3% · Sharpe 1.4 (walk-forward)",
+        tech: ["Python", "NumPy", "xgboost", "scikit-learn", "Plotly"],
+        links: { github: "https://github.com/your-username/systematic-trading", demo: "", post: "" }
+      },
+      {
+        title: "Credit Risk PD Model",
+        domain: ["Data Science", "IB/CorpFin"],
+        blurb: "Logit + gradient boosting model for SME default prediction; interpretable with SHAP; pipeline + monitoring.",
+        impact: "AUC 0.86 holdout · KS 0.47",
+        tech: ["Python", "scikit-learn", "SHAP", "Airflow", "Postgres"],
+        links: { github: "https://github.com/your-username/credit-risk-pd", demo: "", post: "" }
+      },
+      {
+        title: "M&A Comps & DCF Toolkit",
+        domain: ["IB/CorpFin"],
+        blurb: "CLI + web tool to scrape comps, compute trading/transaction multiples, and run sensitivity tables.",
+        impact: "Cut analysis time from 3h to 20m in tests",
+        tech: ["Python", "FastAPI", "Pandas", "Jinja2", "Excel/VBA"],
+        links: { github: "https://github.com/your-username/ma-toolkit", demo: "", post: "" }
+      },
+      {
+        title: "Demand Forecasting Dashboard",
+        domain: ["Data Science"],
+        blurb: "Hierarchical forecasts with Prophet + SARIMAX; confidence bands; anomaly alerts to Slack.",
+        impact: "MAPE ↓ 18% vs baseline",
+        tech: ["Python", "Prophet", "statsmodels", "Plotly Dash", "Slack API"],
+        links: { github: "https://github.com/your-username/forecast-dashboard", demo: "", post: "" }
+      }
+    ];
+
+    function renderProjects(filter = 'All', query = '') {
+      const grid = document.getElementById('projectsGrid');
+      grid.innerHTML = '';
+      const q = query.trim().toLowerCase();
+      let filtered = projects.filter(p => filter === 'All' || p.domain.includes(filter));
+      if (q) filtered = filtered.filter(p => (p.title + ' ' + p.blurb + ' ' + p.tech.join(' ') + ' ' + p.impact).toLowerCase().includes(q));
+
+      document.getElementById('stat-projects').textContent = filtered.length;
+
+      filtered.forEach(p => {
+        const card = document.createElement('article');
+        card.className = 'lift rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 flex flex-col';
+        card.innerHTML = `
+          <div class="flex items-start justify-between gap-4">
+            <h3 class="text-lg font-semibold">${p.title}</h3>
+            <div class="flex gap-1 flex-wrap text-[10px] text-slate-600 dark:text-slate-300">${p.domain.map(d=>`<span class=\"px-2 py-0.5 rounded-full border border-slate-300 dark:border-slate-700\">${d}</span>`).join('')}</div>
+          </div>
+          <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">${p.blurb}</p>
+          <p class="mt-2 text-xs text-slate-500">${p.impact}</p>
+          <div class="mt-3 flex flex-wrap gap-1">${p.tech.map(t=>`<span class=\"text-[10px] px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700\">${t}</span>`).join('')}</div>
+          <div class="mt-4 flex gap-3 text-sm">
+            ${p.links.github ? `<a href="${p.links.github}" class="underline">GitHub</a>` : ''}
+            ${p.links.demo ? `<a href="${p.links.demo}" class="underline">Demo</a>` : ''}
+            ${p.links.post ? `<a href="${p.links.post}" class="underline">Write-up</a>` : ''}
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+      grid.classList.remove('js-hidden');
+    }
+
+    // Filters
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('bg-slate-900','text-white','dark:bg-white','dark:text-slate-900'));
+        btn.classList.add('bg-slate-900','text-white','dark:bg-white','dark:text-slate-900');
+        renderProjects(btn.dataset.filter, document.getElementById('searchInput').value);
+      });
+    });
+
+    // Search
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      const active = document.querySelector('.filter-btn.bg-slate-900');
+      const filter = active ? active.dataset.filter : 'All';
+      renderProjects(filter, e.target.value);
+    });
+
+    // Theme toggle + persist
+    const themeToggle = document.getElementById('themeToggle');
+    function applyTheme(mode) {
+      const root = document.documentElement;
+      if (mode === 'dark') root.classList.add('dark'); else root.classList.remove('dark');
+      localStorage.setItem('theme', mode);
+    }
+    themeToggle.addEventListener('click', () => {
+      const current = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+
+    // Init
+    (function init(){
+      document.getElementById('year').textContent = new Date().getFullYear();
+      const saved = localStorage.getItem('theme');
+      if (saved) applyTheme(saved); else if (window.matchMedia('(prefers-color-scheme: dark)').matches) applyTheme('dark');
+      // Activate All filter by default
+      const allBtn = Array.from(document.querySelectorAll('.filter-btn')).find(b=>b.dataset.filter==='All');
+      allBtn.classList.add('bg-slate-900','text-white','dark:bg-white','dark:text-slate-900');
+      renderProjects('All');
+    })();
+  </script>
+</body>
+</html>
